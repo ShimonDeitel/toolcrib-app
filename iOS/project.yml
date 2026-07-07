@@ -1,0 +1,70 @@
+name: Toolcrib
+options:
+  bundleIdPrefix: com.shimondeitel
+  deploymentTarget:
+    iOS: "17.0"
+settings:
+  base:
+    DEVELOPMENT_TEAM: W7Q885Q59C
+    MARKETING_VERSION: "1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    SWIFT_VERSION: "5.0"
+targets:
+  Toolcrib:
+    type: application
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - path: Toolcrib
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.shimondeitel.toolcrib
+        DEVELOPMENT_TEAM: W7Q885Q59C
+        INFOPLIST_FILE: Toolcrib/Info.plist
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        TARGETED_DEVICE_FAMILY: "1"
+        SUPPORTS_MACCATALYST: false
+    info:
+      path: Toolcrib/Info.plist
+      properties:
+        UILaunchScreen: {}
+        CFBundleDisplayName: Toolcrib - Equipment Log
+        ITSAppUsesNonExemptEncryption: false
+    entitlements:
+      path: Toolcrib/Toolcrib.entitlements
+      properties: {}
+  ToolcribTests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - path: ToolcribTests
+    dependencies:
+      - target: Toolcrib
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.shimondeitel.toolcrib.tests
+        DEVELOPMENT_TEAM: W7Q885Q59C
+  ToolcribUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - path: ToolcribUITests
+    dependencies:
+      - target: Toolcrib
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.shimondeitel.toolcrib.uitests
+        DEVELOPMENT_TEAM: W7Q885Q59C
+schemes:
+  Toolcrib:
+    build:
+      targets:
+        Toolcrib: all
+    test:
+      targets:
+        - ToolcribTests
+        - ToolcribUITests
+    run:
+      config: Debug
